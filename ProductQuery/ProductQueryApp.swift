@@ -9,9 +9,22 @@ import SwiftUI
 
 @main
 struct ProductQueryApp: App {
+    @StateObject var contentViewModel = ContentViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Group {
+                if contentViewModel.isLoading {
+                    ProgressView()
+                    
+                } else {
+                    ContentView()
+                        .environmentObject(contentViewModel)
+                }
+            }
+            .task {
+                await contentViewModel.fetchProducts()
+            }
         }
     }
 }
