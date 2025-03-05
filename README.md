@@ -12,7 +12,10 @@ ProductQuery is a SwiftUI app designed to for querying and product data along wi
 
 ## Note
 
-- No error states have been implemented in this MVP scope. 
+- No error states have been implemented in this MVP scope.
+- Implemented a custom CachedAsyncImage solution rather than using SwiftUIs AsyncImage, since its behavior was rather unexpected when using a TabView + a lazy grid view.
+  - Images are right now cached in the `ImageCacheViewModel`. This could **most definitively(!)** be improved by e.g. caching images in the network layer rather than in the view model layer. 
+
 
 ## Future improvements
 
